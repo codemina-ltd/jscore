@@ -9,5 +9,10 @@
             "email": "e.ibh2011@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "CodeMina\\" : "src"
+        }
+    }
 }
