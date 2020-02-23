@@ -269,7 +269,7 @@ class Helper
      */
     public static function number_format($amount, $currency = AUTH_CURRENCY)
     {
-        return $currency . ' ' . number_format($amount, defined(AUTH_DECIMAL) ? AUTH_DECIMAL : 2);
+        return $currency . ' ' . number_format($amount, defined('AUTH_DECIMAL') ? AUTH_DECIMAL : 2);
     }
 
     /**
