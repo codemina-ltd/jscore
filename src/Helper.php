@@ -234,7 +234,7 @@ class Helper
      * @param string $str
      * @return string
      */
-    public static function random($length = 16, $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+    public static function random($length = 16, $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz")
     {
         $Random = "";
         $characters = $str;
