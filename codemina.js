@@ -14,22 +14,27 @@ const CodeMina = function () {
     };
 
     let uiHelperDataTable = function () {
-        let $table = jQuery('.js-dataTable:not(.dataTable)');
-        $table.dataTable({
-            pageLength: 10,
-            lengthMenu: [[10, 15, 20, 50, 100, 500, -1], [10, 15, 20, 50, 100, 500, 'All']],
-            autoWidth: false,
-            scrollX: $table.data('scroll'),
-            order: [],
-            columnDefs: [
-                {targets: 'no-sort', orderable: false},
-                {targets: 'not-visible', visible: false}
-            ]
+        jQuery('.js-dataTable:not(.dataTable)').each(function () {
+            $(this).dataTable({
+                pageLength: 10,
+                lengthMenu: [[10, 15, 20, 50, 100, 500, -1], [10, 15, 20, 50, 100, 500, 'All']],
+                autoWidth: false,
+                scrollX: $table.data('scroll'),
+                order: [],
+                columnDefs: [
+                    {targets: 'no-sort', orderable: false},
+                    {targets: 'not-visible', visible: false}
+                ]
+            });
         });
     };
 
     let uiHelperNumeric = function () {
         jQuery('.js-numeric:not(.js-numeric-enabled)').each(function () {
+            if (typeof AutoNumeric === 'undefined') {
+                return;
+            }
+
             new AutoNumeric(this, {
                 currencySymbol: '$',
                 emptyInputBehavior: 'always',
