@@ -19,7 +19,7 @@ const CodeMina = function () {
                 pageLength: 10,
                 lengthMenu: [[10, 15, 20, 50, 100, 500, -1], [10, 15, 20, 50, 100, 500, 'All']],
                 autoWidth: false,
-                scrollX: $table.data('scroll'),
+                scrollX: $(this).data('scroll'),
                 order: [],
                 columnDefs: [
                     {targets: 'no-sort', orderable: false},
