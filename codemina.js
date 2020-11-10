@@ -122,6 +122,30 @@ const CodeMina = function () {
                 })
             }
         });
+
+        tinymce.init({
+            selector: '.js-tinyMCE-full',
+            menubar: false,
+            statusbar: false,
+            theme: 'modern',
+            image_advtab: true,
+            height: 150,
+            width: '99%',
+            resize: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen',
+                'insertdatetime media nonbreaking save table contextmenu directionality',
+                'emoticons template paste textcolor colorpicker textpattern imagetools'
+            ],
+            toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media',
+            toolbar2: 'preview | forecolor backcolor | code table',
+            setup: function (editor) {
+                editor.on('change', function () {
+                    editor.save();
+                })
+            }
+        });
     };
 
     let uiHelperTimePicker = function () {
