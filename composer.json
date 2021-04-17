@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "ext-mbstring": "*"
+        "ext-mbstring": "*",
+        "codemina/yii": "^1.4"
     },
     "autoload": {
         "psr-4": {

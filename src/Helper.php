@@ -2,6 +2,8 @@
 
 namespace CodeMina;
 
+use CActiveRecord;
+
 class Helper
 {
 
@@ -277,5 +279,20 @@ class Helper
     public static function date_format($date, $format = 'Y-m-d')
     {
         return !is_null($date) ? date($format, strtotime($date)) : '--';
+    }
+
+    /**
+     * @param CActiveRecord $model
+     * @param $errors
+     * @return void[]
+     */
+    public static function errorBuilder(CActiveRecord $model, [] $errors)
+    {
+        $result = [];
+        $class = get_class($model);
+        foreach ($errors as $key => $error) {
+            $result["{$class}_{$key}"] = $error;
+        }
+        return  $result;
     }
 }
