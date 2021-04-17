@@ -283,10 +283,10 @@ class Helper
 
     /**
      * @param CActiveRecord $model
-     * @param $errors
+     * @param array $errors
      * @return void[]
      */
-    public static function errorBuilder(CActiveRecord $model, [] $errors)
+    public static function errorBuilder(CActiveRecord $model, array $errors)
     {
         $result = [];
         $class = get_class($model);
