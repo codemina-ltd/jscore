@@ -370,7 +370,7 @@ const CodeMina = function () {
             let buttons = [
                 {
                     extend: 'print',
-                    text: '<i class="fa fa-print"></i> Print',
+                    text: `<i class="fa fa-print"></i> ${t('Print')}`,
                     exportOptions: {
                         columns: 'thead th:not(.no-export)'
                     },
