@@ -3,14 +3,11 @@
 namespace CodeMina;
 
 use CActiveRecord;
+use Exception;
 
 class Helper
 {
-
-    /**
-     * @return array
-     */
-    public static function getCountries()
+    public static function getCountries(): array
     {
         $countries = array(
             "Afghanistan",
@@ -208,12 +205,7 @@ class Helper
         return array_combine($countries, $countries);
     }
 
-    /**
-     * @param array $array
-     * @param bool $innerOperator
-     * @return string
-     */
-    public static function bind(array $array, bool $innerOperator = false)
+    public static function bind(array $array, bool $innerOperator = false): string
     {
         $result = [];
         foreach ($array as $key => $value) {
@@ -228,12 +220,7 @@ class Helper
         return implode(' AND ', $result);
     }
 
-    /**
-     * @param int $length
-     * @param string $str
-     * @return string
-     */
-    public static function random($length = 16, $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz")
+    public static function random($length = 16, $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz"): string
     {
         $Random = "";
         $characters = $str;
@@ -246,12 +233,14 @@ class Helper
     }
 
     /**
-     * @param string $html
-     * @param bool $tags
-     * @param int $length
-     * @return string
+     * @throws Exception
      */
-    public static function sub(string $html, bool $tags = false, int $length = 20)
+    public static function generateRandomBytes(int $length = 8): string
+    {
+        return bin2hex(random_bytes($length));
+    }
+
+    public static function sub(string $html, bool $tags = false, int $length = 20): string
     {
         if (!$tags) $html = strip_tags($html);
         if (mb_strlen(strip_tags($html)) > $length) {
@@ -261,36 +250,21 @@ class Helper
         return $html;
     }
 
-    /**
-     * @param $amount
-     * @param string $currency
-     * @return string
-     */
-    public static function number_format($amount, $currency = AUTH_CURRENCY)
+    public static function number_format($amount, $currency = AUTH_CURRENCY): string
     {
         return $currency . ' ' . number_format($amount, defined('AUTH_DECIMAL') ? AUTH_DECIMAL : 2);
     }
 
-    /**
-     * @param $date
-     * @param string $format
-     * @return false|string
-     */
-    public static function date_format($date, $format = 'Y-m-d')
+    public static function date_format($date, string $format = 'Y-m-d'): string
     {
         return !is_null($date) ? date($format, strtotime($date)) : '--';
     }
 
-    /**
-     * @param CActiveRecord $model
-     * @param array $errors
-     * @return void[]
-     */
-    public static function errorBuilder(CActiveRecord $model, array $errors)
+    public static function errorBuilder(CActiveRecord $model): array
     {
         $result = [];
         $class = get_class($model);
-        foreach ($errors as $key => $error) {
+        foreach ($model->getErrors() as $key => $error) {
             $result["{$class}_{$key}"] = $error;
         }
         return  $result;

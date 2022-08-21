@@ -10,14 +10,12 @@
         }
     ],
     "require": {
-        "ext-mbstring": "*"
+        "ext-mbstring": "*",
+        "codemina/yii": "^3.1"
     },
     "autoload": {
         "psr-4": {
             "CodeMina\\" : "src"
         }
-    },
-    "require-dev": {
-        "codemina/yii": "^2.1"
     }
 }
